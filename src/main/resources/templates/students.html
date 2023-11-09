@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+       crossorigin="anonymous">
+</head>
+<body>
+	
+<h1> <center>Student Details</center></h1>
+<hr/>
+<a th:href="@{/student/new}"><center> <button type="button" class="btn btn-warning">
+Add Student</center> </button></a>
+<br>
+<table class="table">
+  <thead class="thead-dark">
+			<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Department</th>
+			<th>Actions</th>
+			
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr th:each="student:${studentList}">
+			<td th:text="${student.name}"></td>
+			<td th:text="${student.email}"></td>
+			<td th:text="${student.department}"></td>
+			<td><a th:href="@{/student/edit/{id}(id=${student.id})}"  
+			button type="button" 
+			class="btn btn-dark">Update</a>
+			
+			<a th:href="@{/student/{id}(id=${student.id})}"  
+			button type="button" 
+			class="btn btn-danger">Delete</a> </td>
+			
+		</tr>
+		
+	</tbody>
+</table>
+
+</body>
+</html>
